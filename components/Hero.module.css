@@ -94,9 +94,10 @@
 
 .sageBack {
   position: absolute;
+  z-index: 3;
   top: 20px;
   left: 2px;
-  width: 68%;
+  width: 23%;
   height: 76%;
   border-radius: 18px;
   background: var(--sage);
@@ -106,9 +107,10 @@
 
 .pinkBack {
   position: absolute;
+  z-index: 2;
   top: 42px;
   left: 78px;
-  width: 74%;
+  width: 64%;
   height: 76%;
   border-radius: 28px 90px 28px 28px;
   background: var(--dusty-pink);
@@ -118,10 +120,10 @@
 
 .photoFrame {
   position: absolute;
-  z-index: 2;
-  top: 48px;
-  left: 16%;
-  width: 64%;
+  z-index: 4;
+  top: 73px;
+  left: 10%;
+  width: 65%;
   height: 64%;
   overflow: hidden;
   border-radius: 24px;
@@ -130,16 +132,19 @@
 
 .photo {
   object-fit: cover;
-  object-position: center 20%;
+  object-position: center 0%;
+  transform: scale(0.9);
+  border-radius: 40px;
 }
 
 /* DECORATIVE STAR */
 
 .accentStar {
   position: absolute;
-  z-index: 3;
-  left: 1%;
-  bottom: 15%;
+  z-index: 5;
+  left: 3%;
+  bottom: 35%;
+  top: 74%;
   color: var(--burgundy);
   font-size: 70px;
   line-height: 1;
