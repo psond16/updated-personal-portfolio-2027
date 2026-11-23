@@ -1,0 +1,31 @@
+.shell {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 28px;
+}
+
+.panel {
+  min-height: 830px;
+  padding: 0 55px;
+  overflow: hidden;
+  border-radius: 24px;
+  background: var(--cream);
+}
+
+@media (max-width: 1100px) {
+  .panel {
+    padding: 0 35px;
+  }
+}
+
+@media (max-width: 760px) {
+  .shell {
+    padding: 12px;
+  }
+
+  .panel {
+    min-height: auto;
+    padding: 0 24px;
+    border-radius: 18px;
+  }
+}

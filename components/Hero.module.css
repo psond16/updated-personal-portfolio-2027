@@ -1,0 +1,309 @@
+.hero {
+  display: flex;
+  flex-direction: column;
+}
+
+/* HERO LAYOUT */
+
+.content {
+  min-height: 580px;
+  display: grid;
+  grid-template-columns: 1.08fr 0.92fr;
+  align-items: center;
+  column-gap: 44px;
+  padding: 50px 0 58px;
+}
+
+/* LEFT SIDE */
+
+.copy {
+  position: relative;
+  z-index: 2;
+  max-width: 590px;
+}
+
+.eyebrow {
+  margin: 0 0 30px;
+  color: var(--green);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+}
+
+.title {
+  margin: 0;
+  color: var(--burgundy);
+  font-family: var(--font-playfair), Georgia, serif;
+  font-size: clamp(68px, 7vw, 105px);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.055em;
+}
+
+.description {
+  max-width: 525px;
+  margin: 36px 0 0;
+  font-size: 20px;
+  line-height: 1.7;
+  color: var(--green);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 40px;
+}
+
+/* BUTTONS */
+
+.button {
+  min-height: 56px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  padding: 0 30px;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.buttonPrimary {
+  background: var(--burgundy);
+  color: white;
+}
+
+.buttonOutline {
+  border: 1px solid var(--green);
+  color: var(--green);
+  background: transparent;
+}
+
+/* RIGHT SIDE - PHOTO COMPOSITION */
+
+.visual {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  height: 450px;
+  margin: 0 auto;
+}
+
+/* SAGE BACKGROUND */
+
+.sageBack {
+  position: absolute;
+  top: 20px;
+  left: 2px;
+  width: 68%;
+  height: 76%;
+  border-radius: 18px;
+  background: var(--sage);
+}
+
+/* PINK BACKGROUND */
+
+.pinkBack {
+  position: absolute;
+  top: 42px;
+  left: 78px;
+  width: 74%;
+  height: 76%;
+  border-radius: 28px 90px 28px 28px;
+  background: var(--dusty-pink);
+}
+
+/* PERSONAL PHOTO */
+
+.photoFrame {
+  position: absolute;
+  z-index: 2;
+  top: 48px;
+  left: 16%;
+  width: 64%;
+  height: 64%;
+  overflow: hidden;
+  border-radius: 24px;
+  background: #e8d8d4;
+}
+
+.photo {
+  object-fit: cover;
+  object-position: center 20%;
+}
+
+/* DECORATIVE STAR */
+
+.accentStar {
+  position: absolute;
+  z-index: 3;
+  left: 1%;
+  bottom: 15%;
+  color: var(--burgundy);
+  font-size: 70px;
+  line-height: 1;
+}
+
+/* CURRENTLY CARD */
+
+.currentlyCard {
+  position: absolute;
+  z-index: 4;
+  right: 8px;
+  bottom: 18px;
+  width: 228px;
+  padding: 22px 24px;
+  border: 1px solid #e6d6c8;
+  border-radius: 15px;
+  background: #fff7ed;
+  box-shadow: 0 8px 22px rgba(72, 39, 39, 0.08);
+}
+
+.currentlyLabel {
+  color: var(--burgundy);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.currentlyCard p {
+  margin: 0 0 10px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.currentlyCard p:last-child {
+  margin-bottom: 0;
+}
+
+/* FOCUS AREAS */
+
+.focusStrip {
+  min-height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  border-top: 1px solid var(--soft-border);
+}
+
+.focusLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 13px;
+  color: var(--green);
+  font-size: 15px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.focusLabel span:first-child {
+  color: var(--burgundy);
+  font-size: 26px;
+}
+
+.focusStrip p {
+  margin: 0;
+  color: var(--green);
+  font-size: 17px;
+  text-align: right;
+}
+
+.focusDot {
+  padding: 0 12px;
+  color: var(--burgundy);
+}
+
+/* TABLET */
+
+@media (max-width: 1100px) {
+  .content {
+    column-gap: 20px;
+  }
+
+  .title {
+    font-size: clamp(58px, 6.5vw, 86px);
+  }
+
+  .description {
+    font-size: 17px;
+  }
+
+  .focusStrip p {
+    font-size: 14px;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 760px) {
+  .content {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 65px 0 45px;
+  }
+
+  .eyebrow {
+    margin-bottom: 22px;
+    font-size: 11px;
+  }
+
+  .title {
+    font-size: clamp(58px, 12vw, 82px);
+  }
+
+  .description {
+    margin-top: 24px;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  .actions {
+    margin-top: 30px;
+  }
+
+  .button {
+    min-height: 48px;
+    padding: 0 22px;
+    font-size: 13px;
+  }
+
+  .visual {
+    height: 370px;
+    max-width: 400px;
+  }
+
+  .currentlyCard {
+    right: 0;
+    bottom: 0;
+    width: 205px;
+    padding: 17px;
+  }
+
+  .focusStrip {
+    padding: 28px 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .focusStrip p {
+    text-align: left;
+    line-height: 1.8;
+  }
+}
+
+@media (max-width: 390px) {
+  .title {
+    font-size: 54px;
+  }
+
+  .visual {
+    height: 310px;
+  }
+
+  .currentlyCard {
+    width: 180px;
+  }
+}
