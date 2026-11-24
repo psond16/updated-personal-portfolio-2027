@@ -1,0 +1,395 @@
+.projects {
+  width: 100%;
+  padding: 65px 0 95px;
+  color: var(--green);
+}
+
+/* SECTION HEADING */
+
+.headingArea {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+  margin-bottom: 48px;
+}
+
+.headingLeft {
+  flex: 1;
+  min-width: 0;
+}
+
+.eyebrow {
+  margin: 0 0 20px;
+  color: var(--green);
+  font-size: 14px;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+}
+
+.title {
+  margin: 0;
+  color: var(--burgundy);
+  font-family: var(--font-playfair), Georgia, serif;
+  font-size: clamp(72px, 8vw, 118px);
+  font-weight: 500;
+  letter-spacing: -0.055em;
+  line-height: 1.1;
+}
+
+.headingRight {
+  display: flex;
+  align-items: center;
+  gap: 45px;
+  width: 36%;
+  min-height: 95px;
+}
+
+.headingDivider {
+  width: 1px;
+  height: 95px;
+  background: var(--soft-border);
+  flex-shrink: 0;
+}
+
+.headingRight p {
+  margin: 0;
+  color: var(--green);
+  font-size: 17px;
+  font-weight: 650;
+  line-height: 1.7;
+}
+
+/* CATEGORY FILTERS */
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 34px;
+}
+
+.filterButton {
+  min-width: 120px;
+  min-height: 43px;
+  padding: 10px 22px;
+  border: 0;
+  border-radius: 999px;
+  background: #dfe5d7;
+  color: var(--green);
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.activeFilter {
+  background: var(--burgundy);
+  color: #fff;
+}
+
+/* PROJECT GRID */
+
+.projectGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px 20px;
+}
+
+.projectCard {
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 18px;
+  background: #f1e9e0;
+}
+
+/* SHARED PREVIEW AREA */
+
+.preview {
+  width: 100%;
+  height: 225px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 17px;
+}
+
+/* WICS MERGE PREVIEW */
+
+.wicsPreview {
+  background: #e8bcc5;
+}
+
+.wicsWindow {
+  width: 255px;
+  height: 140px;
+  padding: 13px;
+  border-radius: 13px;
+  background: #fff6f3;
+  text-align: center;
+}
+
+.wicsTitle {
+  display: block;
+  color: var(--burgundy);
+  font-family: var(--font-playfair), Georgia, serif;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.wicsProduct {
+  width: 100px;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 9px auto 0;
+  border-radius: 15px;
+  background: #e4a2b9;
+  color: var(--burgundy);
+  font-family: var(--font-playfair), Georgia, serif;
+  font-size: 18px;
+}
+
+/* GAMIFIED CHAT PREVIEW */
+
+.chatPreview {
+  background: #b7d3c8;
+}
+
+.chatCards {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+}
+
+.chatCard {
+  width: 68px;
+  height: 102px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  background: #f9f8f4;
+  color: var(--burgundy);
+  font-family: monospace;
+  font-size: 21px;
+}
+
+/* LIT LAB PREVIEW */
+
+.litPreview {
+  background: #c4d2b2;
+}
+
+.litWindow {
+  width: 355px;
+  height: 145px;
+  padding: 18px 35px;
+  border-radius: 17px;
+  background: #f8f7f2;
+  color: var(--green);
+  font-family: var(--font-playfair), Georgia, serif;
+  font-size: 24px;
+  text-align: center;
+}
+
+.litRule {
+  width: 100%;
+  height: 3px;
+  margin-top: 13px;
+  background: var(--green);
+}
+
+/* SWEET-T PREVIEW */
+
+.bakeryPreview {
+  background: #e6cfc7;
+}
+
+.bakeryWindow {
+  width: 315px;
+  height: 145px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 24px;
+  border-radius: 20px;
+  background: #f9f2ee;
+  color: var(--burgundy);
+  font-family: var(--font-playfair), Georgia, serif;
+  font-size: 38px;
+}
+
+/* PROJECT INFORMATION */
+
+.projectInfo {
+  min-height: 80px;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.projectText {
+  min-width: 0;
+}
+
+.projectTitle {
+  margin: 0 0 5px;
+  color: var(--burgundy);
+  font-family: var(--font-playfair), Georgia, serif;
+  font-size: 27px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.projectSubtitle {
+  margin: 0;
+  color: var(--green);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.projectArrow {
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9px;
+  background: #dce3d7;
+  color: var(--burgundy);
+  font-size: 23px;
+}
+
+/* TABLET */
+
+@media (max-width: 1100px) {
+  .projects {
+    padding: 60px 0 75px;
+  }
+
+  .title {
+    font-size: clamp(66px, 8vw, 95px);
+  }
+
+  .headingRight {
+    gap: 25px;
+  }
+
+  .headingRight p {
+    font-size: 15px;
+  }
+
+  .preview {
+    height: 200px;
+  }
+
+  .projectTitle {
+    font-size: 23px;
+  }
+
+  .chatCards {
+    gap: 10px;
+  }
+
+  .chatCard {
+    width: 55px;
+    height: 85px;
+  }
+
+  .litWindow,
+  .bakeryWindow {
+    max-width: 80%;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 760px) {
+  .projects {
+    padding: 55px 0 65px;
+  }
+
+  .headingArea {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 25px;
+    margin-bottom: 35px;
+  }
+
+  .eyebrow {
+    margin-bottom: 14px;
+    font-size: 12px;
+  }
+
+  .title {
+    font-size: clamp(58px, 12vw, 80px);
+  }
+
+  .headingRight {
+    width: 100%;
+    min-height: auto;
+    gap: 18px;
+  }
+
+  .headingDivider {
+    height: 45px;
+  }
+
+  .headingRight p {
+    font-size: 13px;
+  }
+
+  .filters {
+    gap: 9px;
+    margin-bottom: 25px;
+  }
+
+  .filterButton {
+    min-width: 0;
+    min-height: 38px;
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+
+  .projectGrid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .preview {
+    height: 205px;
+  }
+
+  .projectInfo {
+    padding: 15px;
+  }
+
+  .projectTitle {
+    font-size: 24px;
+  }
+
+  .projectSubtitle {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 390px) {
+  .title {
+    font-size: 55px;
+  }
+
+  .wicsWindow {
+    width: 220px;
+  }
+
+  .chatCard {
+    width: 45px;
+    height: 75px;
+  }
+}
