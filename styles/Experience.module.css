@@ -1,0 +1,293 @@
+
+/* EXPERIENCE SECTION */
+
+.experience {
+  width: 100%;
+  padding: 65px 0 85px;
+  color: var(--green);
+}
+
+/* SECTION HEADER */
+
+.headingArea {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+  margin-bottom: 65px;
+}
+
+.headingLeft {
+  flex: 1;
+  min-width: 0;
+}
+
+.eyebrow {
+  margin: 0 0 20px;
+  color: var(--green);
+  font-size: 14px;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+}
+
+.title {
+  margin: 0;
+  color: var(--burgundy);
+  font-family: var(--font-playfair), Georgia, serif;
+  font-size: clamp(72px, 8vw, 118px);
+  font-weight: 500;
+  letter-spacing: -0.055em;
+  line-height: 1.1;
+}
+
+.headingRight {
+  display: flex;
+  align-items: center;
+  gap: 45px;
+  width: 36%;
+  min-height: 95px;
+}
+
+.headingDivider {
+  width: 1px;
+  height: 95px;
+  background: var(--soft-border);
+  flex-shrink: 0;
+}
+
+.headingRight p {
+  margin: 0;
+  color: var(--green);
+  font-size: 17px;
+  font-weight: 650;
+  line-height: 1.7;
+}
+
+/* TIMELINE */
+
+.timeline {
+  position: relative;
+  width: 100%;
+}
+
+/* CONTINUOUS VERTICAL LINE */
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 18px;
+  bottom: 20px;
+  left: 24px;
+  width: 1px;
+  background: var(--soft-border);
+}
+
+/* EACH EXPERIENCE ROW */
+
+.entry {
+  position: relative;
+  display: grid;
+  grid-template-columns: 58px 185px minmax(0, 1fr);
+  align-items: start;
+  gap: 0;
+  min-height: 145px;
+  padding: 24px 18px 25px 0;
+  border-bottom: 1px solid #e4cbce;
+}
+
+.highlighted {
+  background: #e9eddf;
+  border-radius: 18px;
+  border-bottom-color: transparent;
+}
+
+/* TIMELINE MARKERS */
+
+.timelineMarker {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.star {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  color: var(--burgundy);
+  background: var(--cream);
+  font-size: 25px;
+  line-height: 1;
+}
+
+.highlighted .star {
+  background: #e9eddf;
+}
+
+/* DATES */
+
+.date {
+  margin: 8px 0 0;
+  color: var(--green);
+  font-family: var(--font-playfair), Georgia, serif;
+  font-size: 16px;
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+/* EXPERIENCE DETAILS */
+
+.details {
+  min-width: 0;
+}
+
+.role {
+  margin: 0 0 5px;
+  color: var(--burgundy);
+  font-family: var(--font-playfair), Georgia, serif;
+  font-size: 27px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.organization {
+  margin: 0 0 9px;
+  color: var(--green);
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.description {
+  margin: 0;
+  color: #6e7e77;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* TABLET */
+
+@media (max-width: 1100px) {
+  .experience {
+    padding: 60px 0 75px;
+  }
+
+  .title {
+    font-size: clamp(66px, 8vw, 95px);
+  }
+
+  .headingRight {
+    gap: 25px;
+  }
+
+  .headingRight p {
+    font-size: 15px;
+  }
+
+  .entry {
+    grid-template-columns: 52px 155px minmax(0, 1fr);
+  }
+
+  .timeline::before {
+    left: 23px;
+  }
+
+  .role {
+    font-size: 24px;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 760px) {
+  .experience {
+    padding: 55px 0 65px;
+  }
+
+  .headingArea {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 25px;
+    margin-bottom: 40px;
+  }
+
+  .eyebrow {
+    margin-bottom: 14px;
+    font-size: 12px;
+  }
+
+  .title {
+    font-size: clamp(58px, 12vw, 80px);
+  }
+
+  .headingRight {
+    width: 100%;
+    min-height: auto;
+    gap: 18px;
+  }
+
+  .headingDivider {
+    height: 45px;
+  }
+
+  .headingRight p {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .timeline::before {
+    left: 16px;
+  }
+
+  .entry {
+    grid-template-columns: 36px minmax(0, 1fr);
+    gap: 0 12px;
+    min-height: auto;
+    padding: 28px 14px 30px 0;
+  }
+
+  .timelineMarker {
+    grid-row: 1 / 3;
+    justify-content: flex-start;
+  }
+
+  .star {
+    width: 33px;
+    height: 33px;
+    font-size: 23px;
+  }
+
+  .date {
+    grid-column: 2;
+    margin: 0 0 12px;
+    font-size: 14px;
+  }
+
+  .details {
+    grid-column: 2;
+  }
+
+  .role {
+    font-size: 24px;
+  }
+
+  .organization {
+    font-size: 14px;
+  }
+
+  .description {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 390px) {
+  .title {
+    font-size: 55px;
+  }
+
+  .role {
+    font-size: 21px;
+  }
+}

@@ -1,10 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import styles from "./Hero.module.css";
+import styles from "../styles/Hero.module.css";
 
 export default function Hero() {
-  console.log("Hero styles:", styles);
-  console.log("Photo frame class:", styles.photoFrame);
+
   return (
     <section className={styles.hero} id="home">
       <div className={styles.content}>
