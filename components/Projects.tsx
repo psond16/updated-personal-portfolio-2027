@@ -1,9 +1,9 @@
-
 "use client";
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import styles from "../styles/Projects.module.css";
+import Link from "next/link";
 
 type Category = "All" | "Full-stack" | "Web" | "Mobile";
 
@@ -13,6 +13,7 @@ type Project = {
   subtitle: string;
   categories: Category[];
   images: string[];
+  href?: string;
 };
 
 const filters: Category[] = [
@@ -34,6 +35,7 @@ const projects: Project[] = [
       "/images/projects/wics-shop/wics3.png",
       "/images/projects/wics-shop/wics4.png",
     ],
+    href: "/projects/wics-shop",
   },
   {
     id: "sweet-t",
@@ -45,6 +47,7 @@ const projects: Project[] = [
       "/images/projects/Sweet-T/st2.png",
       "/images/projects/Sweet-T/st3.png",
     ],
+    href: "/projects/sweet-t",
   },
   {
     id: "lit-lab",
@@ -57,6 +60,7 @@ const projects: Project[] = [
       "/images/projects/LIT-lab/lit3.PNG",
       "/images/projects/LIT-lab/lit4.PNG",
     ],
+    href: "/projects/lit-lab",
   },
   {
     id: "goat-together",
@@ -69,6 +73,7 @@ const projects: Project[] = [
       "/images/projects/goat-together/gt3.PNG",
       "/images/projects/goat-together/gt4.PNG",
     ],
+    href: "/projects/goat-together",
   },
 ];
 
@@ -234,24 +239,29 @@ export default function Projects() {
             >
               <ProjectSlideshow project={project} />
 
-              <div className={styles.projectInfo}>
-                <div className={styles.projectText}>
-                  <h3 className={styles.projectTitle}>
-                    {project.title}
-                  </h3>
-
-                  <p className={styles.projectSubtitle}>
-                    {project.subtitle}
-                  </p>
-                </div>
-
-                <span
-                  className={styles.projectArrow}
-                  aria-hidden="true"
+                <Link
+                  href={project.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.projectLink}
+                  aria-label={`View ${project.title} project details in a new tab`}
                 >
-                  ↗
-                </span>
-              </div>
+                  <div className={styles.projectInfo}>
+                    <div className={styles.projectText}>
+                      <h3 className={styles.projectTitle}>
+                        {project.title}
+                      </h3>
+
+                      <p className={styles.projectSubtitle}>
+                        {project.subtitle}
+                      </p>
+                    </div>
+
+                    <span className={styles.projectArrow} aria-hidden="true">
+                      ↗
+                    </span>
+                  </div>
+                </Link>
             </article>
           );
         })}
