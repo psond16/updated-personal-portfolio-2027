@@ -1,3 +1,4 @@
+
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -19,68 +20,136 @@ type ProjectDetails = {
   techStack: string[];
   codeUrl?: string;
   liveUrl?: string;
-  overview?: string;
+  overview: string;
   role?: string;
   challenges?: string;
   results?: string;
 };
 
 const projectDetails: Record<string, ProjectDetails> = {
+  // --------------------------------------------------
+  // PROJECT 1 — WICS MERCH SHOP
+  // --------------------------------------------------
+
   "wics-shop": {
     title: "WiCS Merch Shop",
     subtitle:
-      "Merchandise platform for Women in Computer Science at UIC.",
+      "An e-commerce experience for Women in Computer Science at UIC.",
+
     images: [
       "/images/projects/wics-shop/wics1.png",
       "/images/projects/wics-shop/wics2.png",
       "/images/projects/wics-shop/wics3.png",
       "/images/projects/wics-shop/wics4.png",
     ],
-    techStack: ["Astro", "React", "TypeScript", "Git", "CSS"],
+
+    techStack: ["Astro", "React", "Git", "CSS"],
+
     codeUrl: "https://github.com/wics-uic/WiCS-Website",
+
     overview:
-      "A merchandise experience integrated into the Women in Computer Science website at UIC, bringing together product browsing, cart management, and checkout.",
+      "WiCS Merch Shop is a merchandise experience integrated into the Women in Computer Science website at UIC. It brings together product browsing, shopping cart management, and checkout in a cohesive interface.",
+
     role:
-      "I co-led the project and was responsible for the frontend implementation, including product pages, the shopping cart, checkout, and the navigation cart indicator.",
+      "As a co-lead on the project, I took responsibility for the frontend implementation. I worked on the product pages, shopping cart, checkout interface, and navigation cart indicator while coordinating with the backend lead.",
+
     challenges:
-      "Keeping cart information consistent between pages was a key challenge. I implemented temporary browser storage for cart persistence, along with dynamic quantities and checkout totals, while coordinating with the backend lead.",
+      "One important challenge was keeping cart information consistent across different pages. I used temporary browser storage to preserve cart contents and implemented dynamic cart quantities and checkout totals. These frontend decisions also had to be communicated clearly to the backend lead for integration.",
+
     results:
-      "Built connected frontend experiences for browsing products, managing a cart, and checking out, with persistent cart data and dynamically updated totals.",
+      "Implemented interconnected product, cart, and checkout experiences with persistent cart data, dynamic totals, and a consistent cart indicator across the website.",
   },
+
+  // --------------------------------------------------
+  // PROJECT 2 — SWEET-T'S BAKERY
+  // --------------------------------------------------
 
   "sweet-t": {
     title: "Sweet-T's Bakery",
-    subtitle: "Responsive client website.",
+    subtitle:
+      "A responsive website for a bakery, designed to present its brand and offerings.",
+
     images: [
       "/images/projects/Sweet-T/st1.png",
       "/images/projects/Sweet-T/st2.png",
       "/images/projects/Sweet-T/st3.png",
     ],
+
     techStack: [],
+
+    overview:
+      "Sweet-T's Bakery is a website project focused on creating a welcoming online presence for a bakery. The project brings the bakery's branding and content into a responsive web experience.",
+
+    role:
+      "The project involved developing a website experience with an emphasis on visual presentation, readable content, and layouts suited to different screen sizes.",
+
+    challenges:
+      "A key design consideration for a bakery website is balancing visual personality with usability. The interface needs to present the business clearly while remaining easy to navigate across devices.",
+
+    results:
+      "The project showcases a bakery-focused website interface, with screenshots demonstrating its visual design and page layouts.",
   },
+
+  // --------------------------------------------------
+  // PROJECT 3 — UIC LIT LAB APPLICATION
+  // --------------------------------------------------
 
   "lit-lab": {
     title: "UIC LIT Lab Application",
-    subtitle: "Team-based mobile application.",
+    subtitle:
+      "A mobile-oriented reminder and scheduling application developed during my software engineering sprinternship.",
+
     images: [
       "/images/projects/LIT-lab/lit1.png",
       "/images/projects/LIT-lab/lit2.png",
       "/images/projects/LIT-lab/lit3.png",
       "/images/projects/LIT-lab/lit4.png",
     ],
+
     techStack: [],
+
+    overview:
+      "During my Break Through Tech Software Engineering Sprinternship at LIT Lab, I worked with a six-person team on an application that supports creating and managing reminders. The interface included reminder scheduling, family member and location selection, and views for tracking activities over time.",
+
+    role:
+      "I served as Team Captain for our six-person team and contributed directly to frontend development. My work included building and coordinating application views for login, reminder creation, family member and location selection, date ranges, scheduling, calendar, and reminder status sections. I also communicated with mentors and program leads throughout the project.",
+
+    challenges:
+      "The application contained several connected user flows, making consistency across screens important. Coordinating multiple frontend features while leading a team also required clear communication, task organization, and careful integration of different parts of the interface.",
+
+    results:
+      "Contributed more than five frontend features and views while helping coordinate a six-person engineering team. The project strengthened my experience in frontend implementation, collaborative development, and technical leadership.",
   },
+
+  // --------------------------------------------------
+  // PROJECT 4 — GOAT TOGETHER
+  // --------------------------------------------------
 
   "goat-together": {
     title: "Goat Together Goals Tracker App",
-    subtitle: "Mobile application for goal tracking.",
+    subtitle:
+      "A mobile application centered on tracking goals and personal progress.",
+
     images: [
       "/images/projects/goat-together/gt1.png",
       "/images/projects/goat-together/gt2.png",
       "/images/projects/goat-together/gt3.png",
       "/images/projects/goat-together/gt4.png",
     ],
+
     techStack: [],
+
+    overview:
+      "Goat Together is a mobile application project centered on goal tracking. Its purpose is to make goals and progress easier to organize and follow through a mobile-first experience.",
+
+    role:
+      "The project focuses on translating goal-tracking needs into a mobile application interface, with attention to how people view and interact with their goals on smaller screens.",
+
+    challenges:
+      "A central product design consideration is presenting goal information clearly within the limited space of a phone screen while keeping the experience easy to follow.",
+
+    results:
+      "The project showcases a mobile-oriented goal-tracking interface, with screenshots illustrating its application screens and visual direction.",
   },
 };
 
@@ -98,16 +167,27 @@ export default async function ProjectPage({
     slug === "lit-lab" || slug === "goat-together";
 
   const sections = [
-    { title: "Overview", content: project.overview },
-    { title: "My Role", content: project.role },
+    {
+      title: "Overview",
+      content: project.overview,
+    },
+    {
+      title: "My Role",
+      content: project.role,
+    },
     {
       title: "Challenges & Solutions",
       content: project.challenges,
     },
-    { title: "Results", content: project.results },
+    {
+      title: "Results",
+      content: project.results,
+    },
   ].filter(
-    (section): section is { title: string; content: string } =>
-      Boolean(section.content)
+    (section): section is {
+      title: string;
+      content: string;
+    } => Boolean(section.content)
   );
 
   return (
@@ -116,12 +196,16 @@ export default async function ProjectPage({
         <Header />
 
         <div className={styles.content}>
+          {/* BACK TO PROJECTS */}
+
           <Link
             href="/#projects"
             className={styles.backLink}
           >
             ← All Projects
           </Link>
+
+          {/* PROJECT HEADER */}
 
           <header className={styles.projectHeader}>
             <h1 className={styles.title}>
@@ -159,11 +243,15 @@ export default async function ProjectPage({
             )}
           </header>
 
+          {/* SCREENSHOT GALLERY */}
+
           <ProjectGallery
             images={project.images}
             title={project.title}
             isMobile={isMobile}
           />
+
+          {/* TECH STACK */}
 
           {project.techStack.length > 0 && (
             <div className={styles.techRow}>
@@ -182,23 +270,20 @@ export default async function ProjectPage({
             </div>
           )}
 
-          {sections.length > 0 ? (
-            <div className={styles.details}>
-              {sections.map((section) => (
-                <section
-                  key={section.title}
-                  className={styles.detailRow}
-                >
-                  <h2>{section.title}</h2>
-                  <p>{section.content}</p>
-                </section>
-              ))}
-            </div>
-          ) : (
-            <p className={styles.comingSoon}>
-              More details about this project are coming soon.
-            </p>
-          )}
+          {/* PROJECT DETAILS */}
+
+          <div className={styles.details}>
+            {sections.map((section) => (
+              <section
+                key={section.title}
+                className={styles.detailRow}
+              >
+                <h2>{section.title}</h2>
+
+                <p>{section.content}</p>
+              </section>
+            ))}
+          </div>
         </div>
       </div>
     </main>
