@@ -1,112 +1,160 @@
+
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import styles from "../styles/Projects.module.css";
 
-type Category = "All" | "Full-stack" | "Web" | "Backend";
+type Category = "All" | "Full-stack" | "Web" | "Mobile";
 
 type Project = {
   id: string;
   title: string;
   subtitle: string;
   categories: Category[];
-  preview: "wics" | "chat" | "litlab" | "bakery";
+  images: string[];
 };
 
 const filters: Category[] = [
   "All",
   "Full-stack",
   "Web",
-  "Backend",
+  "Mobile",
 ];
 
 const projects: Project[] = [
   {
-    id: "wics-merge",
-    title: "WiCS Merge",
-    subtitle: "Merchandise experience · Astro",
+    id: "wics-shop",
+    title: "WiCS Merch Shop",
+    subtitle: "WiCS @ UIC",
     categories: ["Web"],
-    preview: "wics",
-  },
-  {
-    id: "gamified-chat",
-    title: "Gamified Chat App",
-    subtitle: "Django APIs · PostgreSQL",
-    categories: ["Full-stack", "Backend"],
-    preview: "chat",
-  },
-  {
-    id: "lit-lab",
-    title: "LIT Lab Application",
-    subtitle: "Team-based web application",
-    categories: ["Full-stack", "Web"],
-    preview: "litlab",
+    images: [
+      "/images/projects/wics-shop/wics1.png",
+      "/images/projects/wics-shop/wics2.png",
+      "/images/projects/wics-shop/wics3.png",
+      "/images/projects/wics-shop/wics4.png",
+    ],
   },
   {
     id: "sweet-t",
-    title: "Sweet-T Bakery",
-    subtitle: "Responsive client website",
-    categories: ["Web"],
-    preview: "bakery",
+    title: "Sweet-T's Bakery - E-commerce Website",
+    subtitle: "WiCS @ UIC",
+    categories: ["Full-stack", "Web"],
+    images: [
+      "/images/projects/Sweet-T/st1.png",
+      "/images/projects/Sweet-T/st2.png",
+      "/images/projects/Sweet-T/st3.png",
+    ],
+  },
+  {
+    id: "lit-lab",
+    title: "Social Robot's Reminder App",
+    subtitle: "Break Through Tech X UIC",
+    categories: ["Full-stack", "Mobile"],
+    images: [
+      "/images/projects/LIT-lab/lit1.PNG",
+      "/images/projects/LIT-lab/lit2.PNG",
+      "/images/projects/LIT-lab/lit3.PNG",
+      "/images/projects/LIT-lab/lit4.PNG",
+    ],
+  },
+  {
+    id: "goat-together",
+    title: "Goat Together - Goals Tracker App",
+    subtitle: "Hackathon Project",
+    categories: ["Full-stack", "Mobile"],
+    images: [
+      "/images/projects/goat-together/gt1.PNG",
+      "/images/projects/goat-together/gt2.PNG",
+      "/images/projects/goat-together/gt3.PNG",
+      "/images/projects/goat-together/gt4.PNG",
+    ],
   },
 ];
 
-function ProjectPreview({
-  type,
-}: {
-  type: Project["preview"];
-}) {
-  switch (type) {
-    case "wics":
-      return (
-        <div className={`${styles.preview} ${styles.wicsPreview}`}>
-          <div className={styles.wicsWindow}>
-            <span className={styles.wicsTitle}>
-              WiCS MERCH
-            </span>
-            <div className={styles.wicsProduct}>
-              WiCS
-            </div>
-          </div>
-        </div>
-      );
+function ProjectSlideshow({ project }: { project: Project }) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const viewportRef = useRef<HTMLDivElement>(null);
 
-    case "chat":
-      return (
-        <div className={`${styles.preview} ${styles.chatPreview}`}>
-          <div className={styles.chatCards}>
-            {[1, 2, 3, 4].map((number) => (
-              <div key={number} className={styles.chatCard}>
-                {"{}"}
-              </div>
-            ))}
-          </div>
-        </div>
-      );
+  useEffect(() => {
+    const element = viewportRef.current;
 
-    case "litlab":
-      return (
-        <div className={`${styles.preview} ${styles.litPreview}`}>
-          <div className={styles.litWindow}>
-            <span>LIT Lab / Planner</span>
-            <div className={styles.litRule} />
-          </div>
-        </div>
-      );
+    if (!element) return;
 
-    case "bakery":
-      return (
-        <div className={`${styles.preview} ${styles.bakeryPreview}`}>
-          <div className={styles.bakeryWindow}>
-            Sweet-T
-          </div>
-        </div>
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.25 }
+    );
+
+    observer.observe(element);
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (
+      !isVisible ||
+      isPaused ||
+      project.images.length < 2
+    ) {
+      return;
+    }
+
+    const interval = window.setInterval(() => {
+      setCurrentIndex((previous) =>
+        (previous + 1) % project.images.length
       );
-  }
+    }, 3500);
+
+    return () => window.clearInterval(interval);
+  }, [isVisible, isPaused, project.images.length]);
+
+  return (
+    <div ref={viewportRef} className={styles.preview}>
+      <div
+        className={styles.slideshowTrack}
+        style={{
+          transform: `translateX(-${currentIndex * 100}%)`,
+        }}
+      >
+        {project.images.map((src, index) => (
+          <div key={src} className={styles.slide}>
+            <Image
+              src={src}
+              alt={`${project.title} screenshot ${index + 1}`}
+              fill
+              sizes="(max-width: 760px) 100vw, 50vw"
+              className={styles.thumbnail}
+            />
+          </div>
+        ))}
+      </div>
+
+      {project.images.length > 1 && (
+        <button
+          type="button"
+          className={styles.pauseButton}
+          onClick={() => setIsPaused((previous) => !previous)}
+          aria-label={
+            isPaused
+              ? `Play ${project.title} slideshow`
+              : `Pause ${project.title} slideshow`
+          }
+        >
+          {isPaused ? "▶" : "Ⅱ"}
+        </button>
+      )}
+    </div>
+  );
 }
 
 export default function Projects() {
-  const [activeFilter, setActiveFilter] = useState<Category>("All");
+  const [activeFilter, setActiveFilter] =
+    useState<Category>("All");
 
   const visibleProjects =
     activeFilter === "All"
@@ -146,7 +194,10 @@ export default function Projects() {
 
       {/* PROJECT FILTERS */}
 
-      <div className={styles.filters} aria-label="Filter projects">
+      <div
+        className={styles.filters}
+        aria-label="Filter projects"
+      >
         {filters.map((filter) => (
           <button
             key={filter}
@@ -154,7 +205,9 @@ export default function Projects() {
             onClick={() => setActiveFilter(filter)}
             aria-pressed={activeFilter === filter}
             className={`${styles.filterButton} ${
-              activeFilter === filter ? styles.activeFilter : ""
+              activeFilter === filter
+                ? styles.activeFilter
+                : ""
             }`}
           >
             {filter}
@@ -165,33 +218,43 @@ export default function Projects() {
       {/* PROJECT GRID */}
 
       <div className={styles.projectGrid}>
-        {visibleProjects.map((project) => (
-          <article
-            className={styles.projectCard}
-            key={project.id}
-          >
-            <ProjectPreview type={project.preview} />
+        {visibleProjects.map((project) => {
+          const isMobile =
+            project.id === "lit-lab" ||
+            project.id === "goat-together";
 
-            <div className={styles.projectInfo}>
-              <div className={styles.projectText}>
-                <h3 className={styles.projectTitle}>
-                  {project.title}
-                </h3>
+          return (
+            <article
+              key={project.id}
+              className={`${styles.projectCard} ${
+                isMobile
+                  ? styles.phoneCard
+                  : styles.desktopCard
+              }`}
+            >
+              <ProjectSlideshow project={project} />
 
-                <p className={styles.projectSubtitle}>
-                  {project.subtitle}
-                </p>
+              <div className={styles.projectInfo}>
+                <div className={styles.projectText}>
+                  <h3 className={styles.projectTitle}>
+                    {project.title}
+                  </h3>
+
+                  <p className={styles.projectSubtitle}>
+                    {project.subtitle}
+                  </p>
+                </div>
+
+                <span
+                  className={styles.projectArrow}
+                  aria-hidden="true"
+                >
+                  ↗
+                </span>
               </div>
-
-              <span
-                className={styles.projectArrow}
-                aria-hidden="true"
-              >
-                ↗
-              </span>
-            </div>
-          </article>
-        ))}
+            </article>
+          );
+        })}
       </div>
     </section>
   );
