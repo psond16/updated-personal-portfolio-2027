@@ -1,0 +1,131 @@
+
+.focusStrip {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+  min-height: 110px;
+  width: 100%;
+  border-top: 1px solid var(--soft-border);
+}
+
+.focusLabel {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  white-space: nowrap;
+  color: var(--green);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.labelStar {
+  color: var(--burgundy);
+  font-size: 25px;
+}
+
+.marquee {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 5%,
+    black 95%,
+    transparent
+  );
+}
+
+.track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: marqueeScroll 35s linear infinite;
+}
+
+.wordGroup {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 25px;
+  padding-right: 25px;
+}
+
+.wordItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 25px;
+  flex-shrink: 0;
+  white-space: nowrap;
+  color: var(--green);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.separator {
+  color: var(--burgundy);
+  font-size: 17px;
+}
+
+@keyframes marqueeScroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* PAUSE WHEN HOVERING */
+
+.marquee:hover .track {
+  animation-play-state: paused;
+}
+
+/* TABLET */
+
+@media (max-width: 1100px) {
+  .focusStrip {
+    gap: 22px;
+  }
+
+  .wordItem {
+    font-size: 14px;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 760px) {
+  .focusStrip {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 24px 0;
+  }
+
+  .marquee {
+    width: 100%;
+    flex: none;
+  }
+
+  .wordItem {
+    font-size: 14px;
+  }
+}
+
+/* ACCESSIBILITY */
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation: none;
+  }
+
+  .marquee {
+    overflow-x: auto;
+    mask-image: none;
+  }
+}

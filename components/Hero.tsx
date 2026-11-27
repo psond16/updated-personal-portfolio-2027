@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import styles from "../styles/Hero.module.css";
+import FocusMarquee from "./FocusMarquee";
 
 export default function Hero() {
 
@@ -19,9 +20,7 @@ export default function Hero() {
           </h1>
 
           <p className={styles.description}>
-            I&apos;m a Computer Science and Honors student @ UIC who
-            enjoys building software, solving challenging problems,
-            and bringing ideas to life through code.
+            I've led a <strong>team of 10+</strong>, co-led website development, and built features across <span className={styles.squigglyUnderline}>frontend and backend projects</span>. I learn quickly, take ownership of challenges, and enjoy bringing people together to turn <span className={styles.handCircle}>ambitious</span>ideas into working products.
           </p>
 
           <div className={styles.actions}>
@@ -34,7 +33,7 @@ export default function Hero() {
             </Link>
 
             <Link
-              href="#contact"
+              href="/#contact"
               className={`${styles.button} ${styles.buttonOutline}`}
             >
               Get in Touch
@@ -71,20 +70,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className={styles.focusStrip}>
-        <div className={styles.focusLabel}>
-          <span aria-hidden="true">✦</span>
-          <span>FOCUS AREAS</span>
-        </div>
-
-        <p>
-          Full-Stack Development
-          <span className={styles.focusDot}>·</span>
-          Engineering Leadership
-          <span className={styles.focusDot}>·</span>
-          Mentorship
-        </p>
-      </div>
+      <FocusMarquee />
       
     </section>
     

@@ -7,7 +7,7 @@
 .panel {
   min-height: 830px;
   padding: 0 55px;
-  overflow: hidden;
+  overflow: clip;
   border-radius: 24px;
   background: var(--cream);
 }
