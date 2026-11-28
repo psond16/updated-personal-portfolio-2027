@@ -26,6 +26,17 @@ type ProjectDetails = {
   results?: string;
 };
 
+
+export function generateStaticParams() {
+  return [
+    { slug: "wics-shop" },
+    { slug: "sweet-t" },
+    { slug: "lit-lab" },
+    { slug: "goat-together" },
+  ];
+}
+
+
 const projectDetails: Record<string, ProjectDetails> = {
   // --------------------------------------------------
   // PROJECT 1 — WICS MERCH SHOP
