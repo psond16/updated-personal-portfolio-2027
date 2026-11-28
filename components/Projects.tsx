@@ -13,7 +13,7 @@ type Project = {
   subtitle: string;
   categories: Category[];
   images: string[];
-  href?: string;
+  href: string;
 };
 
 const filters: Category[] = [
